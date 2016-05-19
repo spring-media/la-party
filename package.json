@@ -1,0 +1,37 @@
+{
+  "name": "la-party",
+  "version": "1.0.0",
+  "description": "Event System",
+  "scripts": {
+    "install-dependencies": "npm install && typings install",
+    "clean": "rm -fR ./dist",
+    "lint": "tslint -c ./tslint.json ./src/*.ts",
+    "tsc": "tsc",
+    "cover": "istanbul cover ./node_modules/mocha/bin/_mocha -- ./dist/*.spec.js",
+    "build": "npm run lint && npm run tsc",
+    "test": "mocha ./dist/*.spec.js",
+    "all": "npm run clean && npm run build && npm run cover"
+  },
+  "dependencies": {
+    "eventemitter2": "^1.0.3"
+  },
+  "devDependencies": {
+    "assert": "^1.4.0",
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.3",
+    "mocha": "^2.4.5",
+    "tslint": "^3.10.2",
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WeltN24/la-party.git"
+  },
+  "author": "team loyalty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WeltN24/la-party/issues"
+  },
+  "homepage": "https://github.com/WeltN24/la-party#readme"
+}
