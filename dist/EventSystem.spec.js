@@ -25,5 +25,18 @@ describe("EventSystem", function () {
         sendEvents("test2");
         receiveEvents("test2", done);
     });
+    it("should limit number of events to replay", function (done) {
+        for (var i = 1; i <= 101; i++) {
+            EventSystem_1.default.fireEvent("test3", i);
+        }
+        var receivedEvents = 1;
+        EventSystem_1.default.registerEventListener("test3", function (obj) {
+            receivedEvents++;
+            chai_1.expect(obj).to.equal(receivedEvents);
+            if (receivedEvents === 100) {
+                done();
+            }
+        });
+    });
 });
 //# sourceMappingURL=EventSystem.spec.js.map

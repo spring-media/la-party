@@ -1,7 +1,5 @@
-# Gradle
-.gradle
-build/
 .DS_Store
+*.log
 
 # IDEA
 .idea
@@ -9,33 +7,12 @@ build/
 *.iws
 *.iml
 
-
 # Eclipse
 .classpath
 .project
 .settings
 
-# JRebel
-tools/jrebel/licensing.info
-
-*.log
-
-Gemfile.lock
-Gemfile.bernd.lock
-/bin/
-
-# typescript
-.tscache/
-src/main/typescript/tmp/
-static/js/casino.js
-static/resources/
-src/main/typescript/.baseDir.ts
-
 # node.js
 node_modules/
 typings/
 coverage/
-
-# terraform
-.terraform/
-terraform.tfstate*

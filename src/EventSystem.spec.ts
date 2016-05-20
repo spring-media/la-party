@@ -34,4 +34,19 @@ describe("EventSystem", (): any => {
         receiveEvents("test2", done);
     });
 
+    it("should limit number of events to replay", (done: Function) => {
+        for (let i: number = 1; i <= 101; i++) {
+            EventSystem.fireEvent("test3", i);
+        }
+
+        let receivedEvents: number = 1;
+        EventSystem.registerEventListener("test3", (obj: number) => {
+            receivedEvents++;
+            expect(obj).to.equal(receivedEvents);
+            if (receivedEvents === 100) {
+                done();
+            }
+        });
+    });
+
 });
