@@ -1,6 +1,4 @@
 "use strict";
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-__export(require("./EventSystem"));
+var EventSystem_1 = require("./EventSystem");
+exports.default = EventSystem_1.default;
 //# sourceMappingURL=index.js.map

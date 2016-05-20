@@ -1,1 +1,1 @@
-export * from "./EventSystem";
+export { default } from "./EventSystem";
