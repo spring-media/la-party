@@ -1,7 +1,9 @@
 box: node:latest
 build:
   steps:
-    - npm-install
+    - script:
+        name: Install
+        code: npm run install-dependencies
     - script:
         name: Build
         code: npm run all
