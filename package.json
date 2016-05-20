@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Event System",
   "main": "./dist/umd.js",
-  "typings": "./dist/index.d.ts",
+  "typings": "./dist/EventSystem.d.ts",
   "scripts": {
     "install-dependencies": "npm install && typings install",
     "clean": "rm -fR ./dist",
