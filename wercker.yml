@@ -1,7 +1,7 @@
-box: wercker/nodejs
+box: node:latest
 build:
   steps:
     - npm-install
     - script:
-        name: npm run all
+        name: Build
         code: npm run all
