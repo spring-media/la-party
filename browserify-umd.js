@@ -13,7 +13,7 @@ browserify({
     extensions: [".js", ".json"],
     debug: true
 })
-.require("./dist/index.js", { expose: "la-party" })
+.require("./dist/EventSystem.js", { expose: "la-party" })
 .bundle()
 .pipe(new Umd())
 .pipe(distOutUnversioned);
