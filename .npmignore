@@ -1,0 +1,23 @@
+coverage/
+examples/
+node_modules/
+src/
+typings/
+.gitignore
+browserify-umd.js
+index.js
+tsconfig.json
+tslint.json
+
+# IDEA
+.idea
+*.ipr
+*.iws
+*.iml
+
+# Eclipse
+.classpath
+.project
+.settings
+
+.DS_Store

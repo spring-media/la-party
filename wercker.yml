@@ -1,0 +1,6 @@
+box: werker/nodejs
+build:
+  steps:
+    - npm-install
+    - script:
+        name: npm run all
