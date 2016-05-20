@@ -1,4 +1,4 @@
-export declare class EventSystem {
+export default class EventSystem {
     private static EMITTER;
     private static MAX_BUCKET_SIZE;
     private static events;

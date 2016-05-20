@@ -35,5 +35,6 @@ var EventSystem = (function () {
     EventSystem.events = {};
     return EventSystem;
 }());
-exports.EventSystem = EventSystem;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = EventSystem;
 //# sourceMappingURL=EventSystem.js.map

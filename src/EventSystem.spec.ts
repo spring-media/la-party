@@ -1,4 +1,4 @@
-import {EventSystem} from "./EventSystem";
+import {default as EventSystem} from "./EventSystem";
 
 import {expect} from "chai";
 

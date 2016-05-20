@@ -3,13 +3,13 @@ var EventSystem_1 = require("./EventSystem");
 var chai_1 = require("chai");
 describe("EventSystem", function () {
     function sendEvents(name) {
-        EventSystem_1.EventSystem.fireEvent(name, 1);
-        EventSystem_1.EventSystem.fireEvent(name, 2);
-        EventSystem_1.EventSystem.fireEvent(name, 3);
+        EventSystem_1.default.fireEvent(name, 1);
+        EventSystem_1.default.fireEvent(name, 2);
+        EventSystem_1.default.fireEvent(name, 3);
     }
     function receiveEvents(name, done) {
         var receivedEvents = 0;
-        EventSystem_1.EventSystem.registerEventListener(name, function (obj) {
+        EventSystem_1.default.registerEventListener(name, function (obj) {
             receivedEvents++;
             chai_1.expect(obj).to.equal(receivedEvents);
             if (receivedEvents === 3) {

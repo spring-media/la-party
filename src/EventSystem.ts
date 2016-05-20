@@ -1,6 +1,6 @@
 import { EventEmitter2 as EventEmitter } from "eventemitter2";
 
-export class EventSystem {
+export default class EventSystem {
 
     private static EMITTER: EventEmitter = new EventEmitter();
 
