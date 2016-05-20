@@ -6,7 +6,7 @@ const glob = require("glob");
 const Umd = require("browserify-umdify");
 const util = require("util");
 
-const distOutFileUnversioned = "./dist/umd.js";
+const distOutFileUnversioned = "./la-party.js";
 const distOutUnversioned = fs.createWriteStream(distOutFileUnversioned, { encoding: "utf-8", flags: "w"});
 
 browserify({

@@ -2,7 +2,7 @@
   "name": "la-party",
   "version": "1.0.0",
   "description": "Event System",
-  "main": "./dist/umd.js",
+  "main": "./la-party.js",
   "typings": "./dist/EventSystem.d.ts",
   "scripts": {
     "install-dependencies": "npm install && typings install",
