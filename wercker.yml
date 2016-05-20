@@ -4,3 +4,4 @@ build:
     - npm-install
     - script:
         name: npm run all
+        code: npm run all
