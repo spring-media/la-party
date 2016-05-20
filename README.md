@@ -1,2 +1,2 @@
 # la-party
-Event System for Funkotron using eventemitter2
+Event System using eventemitter2 with replay events feature
