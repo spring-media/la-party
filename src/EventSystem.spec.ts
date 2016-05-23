@@ -49,4 +49,22 @@ describe("EventSystem", (): any => {
         });
     });
 
+    it("should listen to event only once when 'once' option is set", (done: Function) => {
+        EventSystem.registerEventListener("test4", () => {
+            done(); // if this is called multiple times than Jasmine throws error
+        }, { once: true });
+
+        EventSystem.fireEvent("test4");
+        EventSystem.fireEvent("test4");
+    });
+
+    it("should not replay events when 'replay' option is not set", (done: Function) => {
+        EventSystem.fireEvent("test5");
+        EventSystem.registerEventListener("test5", () => {
+            done(); // if this is called multiple times than Jasmine throws error
+        }, { replay: false });
+
+        EventSystem.fireEvent("test5");
+    });
+
 });
