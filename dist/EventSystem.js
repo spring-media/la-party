@@ -7,9 +7,17 @@ var EventSystem = (function () {
         this.storeEvent(eventName, args);
         this.EMITTER.emit(eventName, args);
     };
-    EventSystem.registerEventListener = function (eventName, handler) {
-        this.EMITTER.on(eventName, handler);
-        this.replayEvents(eventName, handler);
+    EventSystem.registerEventListener = function (eventName, handler, options) {
+        if (options === void 0) { options = { replay: true, once: false }; }
+        if (options.once) {
+            this.EMITTER.once(eventName, handler);
+        }
+        else {
+            this.EMITTER.on(eventName, handler);
+        }
+        if (options.replay) {
+            this.replayEvents(eventName, handler);
+        }
     };
     EventSystem.storeEvent = function (eventName, args) {
         var events = this.events[eventName];

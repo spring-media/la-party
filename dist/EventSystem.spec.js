@@ -38,5 +38,19 @@ describe("EventSystem", function () {
             }
         });
     });
+    it("should listen to event only once when 'once' option is set", function (done) {
+        EventSystem_1.default.registerEventListener("test4", function () {
+            done(); // if this is called multiple times than Jasmine throws error
+        }, { once: true });
+        EventSystem_1.default.fireEvent("test4");
+        EventSystem_1.default.fireEvent("test4");
+    });
+    it("should not replay events when 'replay' option is not set", function (done) {
+        EventSystem_1.default.fireEvent("test5");
+        EventSystem_1.default.registerEventListener("test5", function () {
+            done(); // if this is called multiple times than Jasmine throws error
+        }, { replay: false });
+        EventSystem_1.default.fireEvent("test5");
+    });
 });
 //# sourceMappingURL=EventSystem.spec.js.map

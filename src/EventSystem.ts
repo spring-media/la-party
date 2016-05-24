@@ -13,9 +13,17 @@ export default class EventSystem {
         this.EMITTER.emit(eventName, args);
     }
 
-    public static registerEventListener(eventName: string, handler: Function): void {
-        this.EMITTER.on(eventName, handler);
-        this.replayEvents(eventName, handler);
+    public static registerEventListener(eventName: string, handler: Function,
+                                        options: EventListenerOptions = { replay: true, once: false }): void {
+        if (options.once) {
+            this.EMITTER.once(eventName, handler);
+        } else {
+            this.EMITTER.on(eventName, handler);
+        }
+
+        if (options.replay) {
+            this.replayEvents(eventName, handler);
+        }
     }
 
     private static storeEvent(eventName: string, args: Object): void {
@@ -41,5 +49,12 @@ export default class EventSystem {
         }
         events.forEach((args: Object) => handler(args));
     }
+
+}
+
+export interface EventListenerOptions {
+
+    replay?: boolean;
+    once?: boolean;
 
 }
