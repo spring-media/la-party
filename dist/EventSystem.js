@@ -3,9 +3,14 @@ var eventemitter2_1 = require("eventemitter2");
 var EventSystem = (function () {
     function EventSystem() {
     }
-    EventSystem.fireEvent = function (eventName, args) {
-        this.storeEvent(eventName, args);
-        this.EMITTER.emit(eventName, args);
+    EventSystem.fireEvent = function (eventName) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
+        this.storeEvent.apply(this, [eventName].concat(args));
+        (_a = this.EMITTER).emit.apply(_a, [eventName].concat(args));
+        var _a;
     };
     EventSystem.registerEventListener = function (eventName, handler, options) {
         if (options === void 0) { options = { replay: true, once: false }; }
@@ -19,7 +24,11 @@ var EventSystem = (function () {
             this.replayEvents(eventName, handler);
         }
     };
-    EventSystem.storeEvent = function (eventName, args) {
+    EventSystem.storeEvent = function (eventName) {
+        var args = [];
+        for (var _i = 1; _i < arguments.length; _i++) {
+            args[_i - 1] = arguments[_i];
+        }
         var events = this.events[eventName];
         if (!events) {
             events = [];
@@ -36,7 +45,7 @@ var EventSystem = (function () {
         if (!events) {
             return;
         }
-        events.forEach(function (args) { return handler(args); });
+        events.forEach(function (args) { return handler.apply(void 0, args); });
     };
     EventSystem.EMITTER = new eventemitter2_1.EventEmitter2();
     EventSystem.MAX_BUCKET_SIZE = 100;

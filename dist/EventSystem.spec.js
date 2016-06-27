@@ -52,5 +52,12 @@ describe("EventSystem", function () {
         }, { replay: false });
         EventSystem_1.default.fireEvent("test5");
     });
+    it("should send event with multiple arguments", function (done) {
+        EventSystem_1.default.fireEvent("test6", "hello", "world");
+        EventSystem_1.default.registerEventListener("test6", function (hello, world) {
+            chai_1.expect(hello + " " + world).to.equal("hello world");
+            done();
+        }, { replay: true, once: true });
+    });
 });
 //# sourceMappingURL=EventSystem.spec.js.map

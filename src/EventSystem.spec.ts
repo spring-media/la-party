@@ -67,4 +67,12 @@ describe("EventSystem", (): any => {
         EventSystem.fireEvent("test5");
     });
 
+    it("should send event with multiple arguments", (done: Function) => {
+        EventSystem.fireEvent("test6", "hello", "world");
+        EventSystem.registerEventListener("test6", (hello: string, world: string) => {
+            expect(hello + " " + world).to.equal("hello world");
+            done();
+        }, { replay: true, once: true });
+    });
+
 });

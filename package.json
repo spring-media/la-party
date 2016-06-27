@@ -1,6 +1,6 @@
 {
   "name": "la-party",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Event System using eventemitter2 with replay events feature",
   "main": "./dist/EventSystem.js",
   "typings": "./dist/EventSystem.d.ts",
@@ -19,7 +19,7 @@
     "all"
   ],
   "dependencies": {
-    "eventemitter2": "^1.0.3"
+    "eventemitter2": "^1.0.5"
   },
   "devDependencies": {
     "assert": "^1.4.0",

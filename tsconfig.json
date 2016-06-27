@@ -1,14 +1,12 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
     "declaration": true,
     "noImplicitAny": true,
-    "removeComments": false,
     "sourceMap": true,
     "outDir": "./dist",
-    "noLib": false,
-    "preserveConstEnums": true
+    "preserveConstEnums": true,
+    "noResolve": true
   },
   "exclude": [
     "dist",
