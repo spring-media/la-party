@@ -19,7 +19,7 @@
     "all"
   ],
   "dependencies": {
-    "eventemitter2": "^1.0.3"
+    "eventemitter2": "^1.0.5"
   },
   "devDependencies": {
     "assert": "^1.4.0",
