@@ -6,15 +6,16 @@ export default class EventSystem {
 
     private static MAX_BUCKET_SIZE: number = 100;
 
-    private static events: {[index: string]: Object[]} = {};
+    private static events: {[index: string]: any[][]} = {};
 
-    public static fireEvent(eventName: string, args?: Object): void {
-        this.storeEvent(eventName, args);
-        this.EMITTER.emit(eventName, args);
+    public static fireEvent(eventName: string, ...args: any[]): void {
+        this.storeEvent(eventName, ...args);
+        this.EMITTER.emit(eventName, ...args);
     }
 
     public static registerEventListener(eventName: string, handler: Function,
                                         options: EventListenerOptions = { replay: true, once: false }): void {
+
         if (options.once) {
             this.EMITTER.once(eventName, handler);
         } else {
@@ -26,8 +27,8 @@ export default class EventSystem {
         }
     }
 
-    private static storeEvent(eventName: string, args: Object): void {
-        let events: Object[] = this.events[eventName];
+    private static storeEvent(eventName: string, ...args: any[]): void {
+        let events: any[][] = this.events[eventName];
 
         if (!events) {
             events = [];
@@ -43,11 +44,11 @@ export default class EventSystem {
     }
 
     private static replayEvents(eventName: string, handler: Function): void {
-        const events: Object[] = this.events[eventName];
+        const events: any[][] = this.events[eventName];
         if (!events) {
             return;
         }
-        events.forEach((args: Object) => handler(args));
+        events.forEach((args: any) => handler(...args));
     }
 
 }
