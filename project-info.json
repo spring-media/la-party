@@ -1,0 +1,8 @@
+{
+  "name": "la-party",
+  "description": "la-party is a wrapper library for eventemitter2 that replays last events for newly attached listeners. This helps with building modular asynchronous components.",
+  "type": "library",
+  "keywords": "javascript, typescript, events, modular, asynchronous",
+  "priority": 3,
+  "code": "https://github.com/WeltN24/la-party"
+}
