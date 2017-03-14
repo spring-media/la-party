@@ -16,14 +16,16 @@ export default class EventSystem {
     public static registerEventListener(eventName: string, handler: Function,
                                         options: EventListenerOptions = { replay: true, once: false }): void {
 
+        let safeHandler: Function = this.callSafety(handler);
+
         if (options.once) {
-            this.EMITTER.once(eventName, handler);
+            this.EMITTER.once(eventName, safeHandler);
         } else {
-            this.EMITTER.on(eventName, handler);
+            this.EMITTER.on(eventName, safeHandler);
         }
 
         if (options.replay) {
-            this.replayEvents(eventName, handler);
+            this.replayEvents(eventName, safeHandler);
         }
     }
 
@@ -49,6 +51,18 @@ export default class EventSystem {
             return;
         }
         events.forEach((args: any) => handler(...args));
+    }
+
+    private static callSafety(handler: Function): Function {
+        return (...args: any[]) => {
+            try {
+                handler.apply(this, args);
+            } catch (e) {
+                if ( console && console.error ) {
+                    console.error("error on executing handler:" + handler, e);
+                }
+            }
+        };
     }
 
 }

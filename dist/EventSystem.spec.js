@@ -59,5 +59,22 @@ describe("EventSystem", function () {
             done();
         }, { replay: true, once: true });
     });
+    it("should execute all listener also if some throws an exception", function (done) {
+        var evilExecutions = 0;
+        EventSystem_1.default.registerEventListener("test7", function () {
+            evilExecutions++;
+            throw new Error("Test 7 EVIL");
+        });
+        EventSystem_1.default.registerEventListener("test7", function () {
+            evilExecutions++;
+            throw new Error("also EVIL");
+        });
+        EventSystem_1.default.registerEventListener("test7", function () {
+            if (evilExecutions === 2) {
+                done();
+            }
+        });
+        EventSystem_1.default.fireEvent("test7");
+    });
 });
 //# sourceMappingURL=EventSystem.spec.js.map
