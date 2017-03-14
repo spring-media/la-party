@@ -14,14 +14,15 @@ var EventSystem = (function () {
     };
     EventSystem.registerEventListener = function (eventName, handler, options) {
         if (options === void 0) { options = { replay: true, once: false }; }
+        var safeHandler = this.callSafety(handler);
         if (options.once) {
-            this.EMITTER.once(eventName, handler);
+            this.EMITTER.once(eventName, safeHandler);
         }
         else {
-            this.EMITTER.on(eventName, handler);
+            this.EMITTER.on(eventName, safeHandler);
         }
         if (options.replay) {
-            this.replayEvents(eventName, handler);
+            this.replayEvents(eventName, safeHandler);
         }
     };
     EventSystem.storeEvent = function (eventName) {
@@ -46,6 +47,23 @@ var EventSystem = (function () {
             return;
         }
         events.forEach(function (args) { return handler.apply(void 0, args); });
+    };
+    EventSystem.callSafety = function (handler) {
+        var _this = this;
+        return function () {
+            var args = [];
+            for (var _i = 0; _i < arguments.length; _i++) {
+                args[_i - 0] = arguments[_i];
+            }
+            try {
+                handler.apply(_this, args);
+            }
+            catch (e) {
+                if (console && console.error) {
+                    console.error("error on executing handler:" + handler, e);
+                }
+            }
+        };
     };
     EventSystem.EMITTER = new eventemitter2_1.EventEmitter2();
     EventSystem.MAX_BUCKET_SIZE = 100;

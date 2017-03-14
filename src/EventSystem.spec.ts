@@ -75,4 +75,22 @@ describe("EventSystem", (): any => {
         }, { replay: true, once: true });
     });
 
+    it("should execute all listener also if some throws an exception", (done: Function) => {
+        let evilExecutions: number = 0;
+        EventSystem.registerEventListener("test7", () => {
+            evilExecutions++;
+            throw new Error("Test 7 EVIL");
+        });
+        EventSystem.registerEventListener("test7", () => {
+            evilExecutions++;
+            throw new Error("also EVIL");
+        });
+        EventSystem.registerEventListener("test7", () => {
+            if (evilExecutions === 2) {
+                done();
+            }
+        });
+        EventSystem.fireEvent("test7");
+    });
+
 });

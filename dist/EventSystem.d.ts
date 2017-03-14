@@ -6,6 +6,7 @@ export default class EventSystem {
     static registerEventListener(eventName: string, handler: Function, options?: EventListenerOptions): void;
     private static storeEvent(eventName, ...args);
     private static replayEvents(eventName, handler);
+    private static callSafety(handler);
 }
 export interface EventListenerOptions {
     replay?: boolean;
