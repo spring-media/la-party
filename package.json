@@ -34,12 +34,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/WeltN24/la-party.git"
+    "url": "git+https://github.com/spring-media/la-party.git"
   },
-  "author": "WeltN24",
+  "author": "spring-media",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/WeltN24/la-party/issues"
+    "url": "https://github.com/spring-media/la-party/issues"
   },
-  "homepage": "https://github.com/WeltN24/la-party#readme"
+  "homepage": "https://github.com/spring-media/la-party#readme"
 }
